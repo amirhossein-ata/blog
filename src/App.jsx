@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
+import Home from './scripts/view/pages/Home/index'
 import "./App.scss";
+import Post from './scripts/view/pages/Post/index'
 
 class App extends React.Component {
   render() {
@@ -12,7 +14,12 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            component={() => <div>Home</div>}
+            component={() => <Home />}
+          />
+          <Route
+            exact
+            path="/post/:postID"
+            component={() => <Post />}
           />
         </Switch>
       </div>
