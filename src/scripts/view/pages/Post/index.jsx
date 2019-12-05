@@ -1,20 +1,22 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-const Post = ({post}) => {
+const Post = ({post, match}) => {
+    console.log(match)
     return (
         <div className="post-wrapper">
             <div className="post-header">
-                <img className="post-header-image" src={post.image} />
+                <img className="post-header-image" src={post.image} alt=""/>
                 <div className="post-header-info">
                     <div className="post-title">{post.title}</div>
                     <div className="post-author">
                         <div className="post-author-name">
-                            {post.author.name}
+                            John
                         </div>
                         <div className="post-author-email">
-                            {post.author.email}
+                            john@gmail.com
                         </div>
-                    }</div>   
+                    </div>   
                 </div>
             </div>
             <div className="post-text">{post.text}</div>
@@ -26,4 +28,10 @@ const Post = ({post}) => {
     )
 }
 
-export default Post
+const mapStateToProps = state => {
+    return{
+        post: state.posts.posts.find(post => post.id === 1)
+    }
+}
+
+export default connect(mapStateToProps)(Post);

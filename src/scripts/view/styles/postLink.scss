@@ -1,0 +1,37 @@
+.feed {
+    display: flex;
+    justify-content: center;
+}
+.posts-list {
+    width: 60%;
+    min-width: 400px;
+}
+.postLink-wrapper {
+    padding: 1rem;
+    
+    .postLink-title {
+        a{
+            font-size: large;
+            font-weight: bolder;
+            color: #1E3340;
+        }
+        margin-bottom: 1em;
+    }
+
+    .postLink-description{ 
+        color: rgba(0,0,0,.54);
+        margin-bottom: 1em;
+    }
+    
+    .postLink-date {
+        color: rgba(0,0,0,.54)
+    }
+}
+
+
+
+a:-webkit-any-link {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}

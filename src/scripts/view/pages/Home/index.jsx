@@ -10,21 +10,23 @@ const Home = ({dispatch, posts, postsLoadStatus}) => {
         dispatch(getAllPosts())
     }, [])
     return (
-        <div>
-            {postsLoadStatus === 'loaded' && posts.map((post, index) => (
-                <PostLink 
-                    key={index} 
-                    post={{
-                        id: index,
-                        title: post.title,
-                        description: post.body,
-                        author:{ 
-                            name: 'James'
-                        },
-                        date: "yesterday"
-                    }}
-                />
-            ))}
+        <div className="feed">            
+            <div className="posts-list">
+                {postsLoadStatus === 'loaded' && posts.map((post, index) => (
+                    <PostLink 
+                        key={index} 
+                        post={{
+                            id: index,
+                            title: post.title,
+                            description: post.body,
+                            author:{ 
+                                name: 'James'
+                            },
+                            date: "yesterday"
+                        }}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

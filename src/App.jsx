@@ -2,12 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import Home from './scripts/view/pages/Home/index'
-import "./App.scss";
+import "./scripts/view/styles/main.scss"
 import Post from './scripts/view/pages/Post/index'
 
 class App extends React.Component {
   render() {
-    const { dispatch } = this.props;
+    const { match } = this.props;
+    console.log(this.props)
     return (
       <div>
         <Switch>
@@ -19,7 +20,7 @@ class App extends React.Component {
           <Route
             exact
             path="/post/:postID"
-            component={() => <Post />}
+            component={() => <Post match={match} />}
           />
         </Switch>
       </div>
