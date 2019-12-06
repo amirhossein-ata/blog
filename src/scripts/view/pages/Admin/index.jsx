@@ -16,13 +16,13 @@ const AdminPage = ({dispatch, posts, postsLoadStatus}) => {
             <div className="feed">                
                 <div className="posts-list">
                     <NewPost createNewPost={createNewPost} dispatch={dispatch}/>
-                    {postsLoadStatus === 'loaded' && posts.map((post, index) => (
+                    {false && posts.map((post, index) => (
                         <PostLink 
                             key={index} 
                             post={{
                                 id: index,
-                                title: post.title,
-                                description: post.body,
+                                title: post.Title,
+                                description: post.Text,
                                 author:{ 
                                     name: 'James'
                                 },

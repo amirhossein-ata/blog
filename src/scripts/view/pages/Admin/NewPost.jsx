@@ -14,6 +14,7 @@ const NewPost = ({createNewPost, dispatch}) => {
     const handleSubmit = () => {
         dispatch(createNewPost({
             ID: 1,
+            Title: post.title,
             Text: post.text,
             Likes: 0,
             AuthorID: 1,
