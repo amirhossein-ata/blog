@@ -5,3 +5,10 @@ export function getAllPosts() {
         type: ActionTypes.GET_ALL_POSTS_REQUEST
     }
 }
+
+export function createNewPost(post, userID) {
+    return {
+        type: ActionTypes.CREATE_NEW_POST_REQUEST,
+        payload: {post, userID}
+    }
+}

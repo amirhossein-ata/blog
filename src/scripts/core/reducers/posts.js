@@ -8,6 +8,10 @@ const initialState = {
 
 export default (state=initialState, action) => {
     switch(action.type){
+        case 'persist/REHYDRATE': 
+            return immutable(state, {
+                postsLoadStatus: { $set :'idle' }
+            })
         case ActionTypes.GET_ALL_POSTS_REQUEST:
             return immutable(state, {
                 postsLoadStatus: { $set: 'running'}

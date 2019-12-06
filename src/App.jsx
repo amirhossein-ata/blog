@@ -1,9 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
-import Home from './scripts/view/pages/Home/index'
+import Home from './scripts/view/pages/Home/index';
+import Post from './scripts/view/pages/Post/index';
+import Admin from './scripts/view/pages/Admin/index';
+import NewPost from './scripts/view/pages/Admin/NewPost'
+
 import "./scripts/view/styles/main.scss"
-import Post from './scripts/view/pages/Post/index'
 
 class App extends React.Component {
   render() {
@@ -21,6 +24,16 @@ class App extends React.Component {
             exact
             path="/post/:postID"
             component={() => <Post match={match} />}
+          />
+          <Route
+            exact
+            path="/admin"
+            component={() => <Admin />}
+          />
+          <Route
+            exact
+            path="/new-post"
+            component={() => <NewPost />}
           />
         </Switch>
       </div>

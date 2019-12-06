@@ -7,7 +7,7 @@ import { getAllPosts } from '../../../core/actions/posts'
 
 const Home = ({dispatch, posts, postsLoadStatus}) => {
     useEffect(() => {
-        dispatch(getAllPosts())
+        // dispatch(getAllPosts())
     }, [])
     return (
         <div className="feed">            
