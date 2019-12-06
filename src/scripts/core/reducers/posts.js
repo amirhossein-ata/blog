@@ -19,7 +19,7 @@ export default (state=initialState, action) => {
         case ActionTypes.GET_ALL_POSTS_SUCCESS:
             return immutable(state, {
                 postsLoadStatus: { $set: 'loaded'},
-                posts: { $set: action.payload.posts}
+                posts: { $set: [...state.posts, action.payload.posts]}
             })
         case ActionTypes.GET_ALL_POSTS_SUCCESS:
             return immutable(state, {

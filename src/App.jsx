@@ -18,17 +18,12 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            component={() => <Home />}
+            component={() => <Admin />}
           />
           <Route
             exact
             path="/post/:postID"
             component={() => <Post match={match} />}
-          />
-          <Route
-            exact
-            path="/admin"
-            component={() => <Admin />}
           />
           <Route
             exact

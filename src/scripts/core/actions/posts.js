@@ -12,3 +12,9 @@ export function createNewPost(post, userID) {
         payload: {post, userID}
     }
 }
+
+export function createUser() {
+    return {
+        type: ActionTypes.CREATE_USER
+    }
+}

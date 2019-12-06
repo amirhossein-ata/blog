@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import PostLink from '../../components/PostLink';
 import NewPost from './NewPost'
 //actions
-import { getAllPosts, createNewPost } from '../../../core/actions/posts'
+import { getAllPosts, createNewPost, createUser } from '../../../core/actions/posts'
 
 const AdminPage = ({dispatch, posts, postsLoadStatus}) => {
     useEffect(() => {
+        dispatch(createUser())
         dispatch(getAllPosts())
     }, [])
 
@@ -16,7 +17,7 @@ const AdminPage = ({dispatch, posts, postsLoadStatus}) => {
             <div className="feed">                
                 <div className="posts-list">
                     <NewPost createNewPost={createNewPost} dispatch={dispatch}/>
-                    {false && posts.map((post, index) => (
+                    {posts.map((post, index) => (
                         <PostLink 
                             key={index} 
                             post={{
