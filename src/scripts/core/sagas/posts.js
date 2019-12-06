@@ -7,7 +7,7 @@ export function* getAllPosts({ payload }) {
   try {
     /* istanbul ignore next */
     console.log('getting all posts')
-    const response = yield call(request, 'http://localhost/post/1', {
+    const response = yield call(request, 'http://localhost:8000/post/1', {
         payload,
         method: 'GET',
     })
