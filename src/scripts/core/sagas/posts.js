@@ -8,51 +8,43 @@ export function* getAllPosts({ payload }) {
   try {
     /* istanbul ignore next */
     console.log('getting all posts')
-    const timeout = 80
+    const timeout = 10
     let optimalSince= ''
     if(sinceTime){
       optimalSince = "&since_time=" + sinceTime;
     }
-    const url = 'http://localhost:8000/longpoll?timeout=' + 10 + '&category=farm' +optimalSince
+    const url = 'http://localhost:8000/longpoll?timeout=' + timeout + '&category=Last post' +optimalSince
     const response = yield call(request, url, {
         payload,
         method: 'GET',
     })
-    console.log(response)
-    if(response.status === 502 ){
-      console.log('timeout, requesting again');
-      yield put({ 
-        type: ActionTypes.GET_ALL_POSTS_REQUEST,
-
-      })
-    } else if(response.status !== 200) {
-        console.log('error, requesting again');
-        yield put({
-          type: ActionTypes.GET_ALL_POSTS_FAILURE,
-          payload: {
-            message: response.data,
-          },
-        });
-
-        yield put({
-          type: ActionTypes.GET_ALL_POSTS_REQUEST,
-  
-        })
-    } else {
-      console.log('success, requesting again')
-      yield put({
-        type: ActionTypes.GET_ALL_POSTS_SUCCESS,
-        payload: {
-          posts: response.data,
-        },
-      });
+    console.log(response.data)
+    if(response.data && response.data.events && response.data.events.length > 0){
+      console.log('success');
+      
+      for (var i = 0; i < response.data.events.length; i++) {
+        // Display event
+        var event = response.data.events[i];
+        sinceTime = event.timestamp;
+      }
 
       yield put({
         type: ActionTypes.GET_ALL_POSTS_REQUEST,
-
       })
-
+    }     
+    if (response.data && response.data.timeout) {
+      console.log("No events, checking again.");
+      yield put({
+        type: ActionTypes.GET_ALL_POSTS_REQUEST,
+      })
     }
+    if (response.data && response.data.error) {
+      console.log("Error response: " + response.data.error);
+      console.log("Trying again shortly...")
+      yield put({
+        type: ActionTypes.GET_ALL_POSTS_REQUEST,
+      })
+  }
     
   } catch (err) {
       yield put({
